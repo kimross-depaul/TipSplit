@@ -116,11 +116,11 @@
         tools:text="Overage" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:text="Button"
+        android:text="@string/btn_go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/lblNumberPeople" />
 
@@ -131,17 +131,32 @@
         android:layout_marginEnd="10dp"
         android:background="@color/mint"
         android:ems="10"
+        android:hint="@string/lbl_bill_total_with_tax"
         android:inputType="numberDecimal"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/lblBillTotal" />
 
     <EditText
         android:id="@+id/txtPeople"
         android:layout_width="81dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/mint"
         android:ems="10"
+        android:hint="@string/txt_no_people"
         android:inputType="number"
-        app:layout_constraintTop_toTopOf="@+id/lblNumberPeople"
-        tools:layout_editor_absoluteX="210dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btnPeople"
+        app:layout_constraintTop_toTopOf="@+id/lblNumberPeople" />
+
+    <Button
+        android:id="@+id/btnClearIt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/btn_clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
