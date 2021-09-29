@@ -77,19 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTotalPerPerson" />
 
-    <EditText
-        android:id="@+id/txtNoPeople"
-        android:layout_width="111dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="99dp"
-        android:autofillHints=""
-        android:background="@color/mint"
-        android:ems="10"
-        android:hint="@string/txt_no_people"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/btnRecalc"
-        app:layout_constraintTop_toTopOf="@+id/lblNumberPeople"
-        tools:ignore="TextContrastCheck" />
+
 
     <TextView
         android:id="@+id/calcTipAmount"
@@ -128,10 +116,32 @@
         tools:text="Overage" />
 
     <Button
-        android:id="@+id/btnRecalc"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_go"
+        android:layout_marginEnd="10dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblNumberPeople" />
+
+    <EditText
+        android:id="@+id/txtTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/mint"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblBillTotal" />
+
+    <EditText
+        android:id="@+id/txtPeople"
+        android:layout_width="81dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="number"
         app:layout_constraintTop_toTopOf="@+id/lblNumberPeople"
-        tools:layout_editor_absoluteX="191dp" />
+        tools:layout_editor_absoluteX="210dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
