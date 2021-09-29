@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TipSplit</string>
+    <string name="lbl_bill_total_with_tax">Bill Total with Tax:</string>
+    <string name="lbl_tip_percent">Tip Percent:</string>
+    <string name="lbl_tip_amount">Tip Amount:</string>
+    <string name="lbl_total_with_tip">Total with Tip:</string>
+    <string name="lbl_number_of_people">Number of People:</string>
+    <string name="lbl_total_per_person">Total per Person:</string>
+    <string name="lbl_overage">Overage:</string>
+    <string name="txt_bill_total_with_tax">Bill Total with Tax</string>
+    <string name="txt_no_people">No. People</string>
+    <string name="btn_go">Go</string>
+    <string name="btn_clear">Clear</string>
+</resources>
