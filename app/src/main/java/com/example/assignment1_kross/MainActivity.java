@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         }
         makeText(this, String.format("Radio was selected: %2d", tipPercent), LENGTH_SHORT).show();
         Log.d(TAG, String.format("Selected radio %d",tipPercent ));
+        calculateAmounts();
     }
     public void calculateAmounts() {
         EditText txtTotal = findViewById(R.id.txtTotal);
@@ -52,7 +53,43 @@ public class MainActivity extends AppCompatActivity {
         TextView calcTotalPerPerson = findViewById(R.id.calctotalPerPerson);
         TextView calcOverage = findViewById(R.id.calcOverage);
 
+        Calculator calculator = new Calculator();
+        calculator.calculateTip(txtTotal, tipPercent);
+        calcTipAmount.setText(String.format("%.2f", calculator.dblTip));
+        calcTotalWithTip.setText(String.format("%.2f", calculator.dblTotalWithTip));
+        calcTotalPerPerson.setText(String.format("%.2f", calculator.splitBill(txtNumPeople)));
+    }
+
+    class Calculator {
+        Double dblTip;
+        Double dblTotalWithTip;
+
+        void calculateTip(EditText txtDouble, Integer intTip) {
+            double d;
+            try {
+                d = Double.parseDouble(txtDouble.getText().toString());
+            }catch (NumberFormatException nex) {
+                dblTip = null;
+                dblTotalWithTip = null;
+                return;
+            }
+            dblTip = d * (intTip * .01);
+            dblTotalWithTip = dblTip + d;
+        }
+        Double splitBill(EditText txtNumPeople){
+            int intPeople;
+            try {
+                intPeople = Integer.parseInt(txtNumPeople.getText().toString());
+            }catch(NumberFormatException nex) {
+                return -2.0;
+            }
+            if (intPeople > 0 && dblTotalWithTip != null){
+                return dblTotalWithTip / intPeople;
+            }else {
+                return 0.0;
+            }
+        }
+
 
     }
-    //private get
 }
