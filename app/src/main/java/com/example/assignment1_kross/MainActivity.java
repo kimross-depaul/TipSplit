@@ -58,35 +58,50 @@ public class MainActivity extends AppCompatActivity {
         calcTipAmount.setText(String.format("%.2f", calculator.dblTip));
         calcTotalWithTip.setText(String.format("%.2f", calculator.dblTotalWithTip));
         calcTotalPerPerson.setText(String.format("%.2f", calculator.splitBill(txtNumPeople)));
+        calcOverage.setText(String.format("%.2f", calculator.overage()));
     }
 
     class Calculator {
-        Double dblTip;
-        Double dblTotalWithTip;
+        Float dblTip;
+        Float dblTotalWithTip;
+        Float perPerson;
+        int intPeople;
 
         void calculateTip(EditText txtDouble, Integer intTip) {
-            double d;
+            Float d;
             try {
-                d = Double.parseDouble(txtDouble.getText().toString());
+                d = Float.parseFloat(txtDouble.getText().toString());
             }catch (NumberFormatException nex) {
                 dblTip = null;
                 dblTotalWithTip = null;
                 return;
             }
-            dblTip = d * (intTip * .01);
+            dblTip = d * (intTip * .01f);
             dblTotalWithTip = dblTip + d;
         }
-        Double splitBill(EditText txtNumPeople){
-            int intPeople;
+        Float splitBill(EditText txtNumPeople) {
             try {
                 intPeople = Integer.parseInt(txtNumPeople.getText().toString());
             }catch(NumberFormatException nex) {
-                return -2.0;
+                return -2.0f;
             }
             if (intPeople > 0 && dblTotalWithTip != null){
-                return dblTotalWithTip / intPeople;
+                perPerson = dblTotalWithTip / intPeople;
+                return perPerson;
             }else {
-                return 0.0;
+                return -2.0f;
+            }
+        }
+        Float overage() {
+            try {
+                Log.d(TAG, perPerson.toString());
+                Float x = perPerson * intPeople;
+                Log.d(TAG, x.toString());
+                Float y = dblTotalWithTip - x;
+                Log.d(TAG, y.toString());
+                return dblTotalWithTip - (perPerson * intPeople);
+            }catch (Exception ex) {
+                return -3.0f;
             }
         }
 
