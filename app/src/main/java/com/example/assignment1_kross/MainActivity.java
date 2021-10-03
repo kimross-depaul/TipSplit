@@ -16,19 +16,35 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private static final String FORMAT = "$%.2f";
     int tipPercent = 0;
+    EditText txtTotal;
+    TextView calcTipAmount;
+    TextView calcTotalWithTip;
+    EditText txtNumPeople;
+    TextView calcTotalPerPerson;
+    TextView calcOverage;
+    Calculator calculator;
 
-    //TextView output1 = findViewById(R.id.textViewWhatever)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        txtTotal = findViewById(R.id.txtTotal);
+        calcTipAmount = findViewById(R.id.calcTipAmount);
+        calcTotalWithTip = findViewById(R.id.calcTotalWTip);
+        txtNumPeople = findViewById(R.id.txtPeople);
+        calcTotalPerPerson = findViewById(R.id.calctotalPerPerson);
+        calcOverage = findViewById(R.id.calcOverage);
+        calculator = new Calculator();
     }
 
     public void rdoGroupTipPercent_click(View v) {
-        //((RadioButton)v).setChecked(false) - unselects the radio if the bill is empty
-        Log.d(TAG, "-----------HEY!!!!!!!!__________");
+        if (txtTotal.getText().toString().equals("")) {
+            ((RadioButton) v).setChecked(false); // Unselects the Radio if the bill is empty
+            return;
+        }
         if (v.getId() == R.id.radioButton12) {
             tipPercent = 12;
         }else if (v.getId() == R.id.radioButton15) {
@@ -45,66 +61,24 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, String.format("Selected radio %d",tipPercent ));
         calculateAmounts();
     }
+    public void btnGo_clicked(View v) {
+        calculateAmounts();
+    }
+    public void btnClear_clicked(View v) {
+        txtTotal.setText("");
+        txtNumPeople.setText("");
+        calculateAmounts();
+    }
     public void calculateAmounts() {
-        EditText txtTotal = findViewById(R.id.txtTotal);
-        TextView calcTipAmount = findViewById(R.id.calcTipAmount);
-        TextView calcTotalWithTip = findViewById(R.id.calcTotalWTip);
-        EditText txtNumPeople = findViewById(R.id.txtPeople);
-        TextView calcTotalPerPerson = findViewById(R.id.calctotalPerPerson);
-        TextView calcOverage = findViewById(R.id.calcOverage);
-
-        Calculator calculator = new Calculator();
         calculator.calculateTip(txtTotal, tipPercent);
-        calcTipAmount.setText(String.format("%.2f", calculator.dblTip));
-        calcTotalWithTip.setText(String.format("%.2f", calculator.dblTotalWithTip));
-        calcTotalPerPerson.setText(String.format("%.2f", calculator.splitBill(txtNumPeople)));
-        calcOverage.setText(String.format("%.2f", calculator.overage()));
-    }
+        calculator.splitBill(txtNumPeople);
 
-    class Calculator {
-        Float dblTip;
-        Float dblTotalWithTip;
-        Float perPerson;
-        int intPeople;
-
-        void calculateTip(EditText txtDouble, Integer intTip) {
-            Float d;
-            try {
-                d = Float.parseFloat(txtDouble.getText().toString());
-            }catch (NumberFormatException nex) {
-                dblTip = null;
-                dblTotalWithTip = null;
-                return;
-            }
-            dblTip = d * (intTip * .01f);
-            dblTotalWithTip = dblTip + d;
-        }
-        Float splitBill(EditText txtNumPeople) {
-            try {
-                intPeople = Integer.parseInt(txtNumPeople.getText().toString());
-            }catch(NumberFormatException nex) {
-                return -2.0f;
-            }
-            if (intPeople > 0 && dblTotalWithTip != null){
-                perPerson = dblTotalWithTip / intPeople;
-                return perPerson;
-            }else {
-                return -2.0f;
-            }
-        }
-        Float overage() {
-            try {
-                Log.d(TAG, perPerson.toString());
-                Float x = perPerson * intPeople;
-                Log.d(TAG, x.toString());
-                Float y = dblTotalWithTip - x;
-                Log.d(TAG, y.toString());
-                return dblTotalWithTip - (perPerson * intPeople);
-            }catch (Exception ex) {
-                return -3.0f;
-            }
-        }
-
+        calcTipAmount.setText(calculator.getTip(FORMAT));
+        calcTotalWithTip.setText(calculator.getTotalWithTip(FORMAT));
+        calcTotalPerPerson.setText(calculator.getBillPerPerson(FORMAT));
+        calcOverage.setText(calculator.getOverage(FORMAT));
 
     }
+
+
 }
