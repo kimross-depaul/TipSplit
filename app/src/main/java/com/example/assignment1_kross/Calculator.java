@@ -18,13 +18,18 @@ class Calculator {
         Double d;
         try {
             d = Double.parseDouble(txtDouble.getText().toString());
+            if (intTip > 0) {
+                dblTip = d * (intTip * .01f);
+                dblTotalWithTip = dblTip + d;
+            }
+            return;
         }catch (NumberFormatException nex) {
             dblTip = null;
             dblTotalWithTip = null;
-            return;
         }
-        dblTip = d * (intTip * .01f);
-        dblTotalWithTip = dblTip + d;
+        dblTip = null;
+        dblTotalWithTip = null;
+
     }
     public void splitBill(EditText txtNumPeople) {
         try {

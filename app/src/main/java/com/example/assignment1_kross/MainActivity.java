@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final String FORMAT = "$%.2f";
-    int tipPercent = 0;
+    Integer tipPercent = 0;
     EditText txtTotal;
     TextView calcTipAmount;
     TextView calcTotalWithTip;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         saveState(txtTotal, "txtTotal", outState);
         saveState(txtNumPeople, "txtNumPeople", outState);
+        outState.putInt("tipPercent", tipPercent);
         calculator.saveState(outState);
         super.onSaveInstanceState(outState);
     }
@@ -57,14 +58,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         calculator.restoreState(savedInstanceState);
+
         txtTotal.setText(savedInstanceState.getString("txtTotal"));
         txtNumPeople.setText(savedInstanceState.getString("txtNumPeople"));
+        tipPercent = savedInstanceState.getInt("tipPercent");
         calculateAmounts();
     }
 
     public void rdoGroupTipPercent_click(View v) {
         if (txtTotal.getText().toString().equals("")) {
             ((RadioButton) v).setChecked(false); // Unselects the Radio if the bill is empty
+            tipPercent = null;
             return;
         }
         if (v.getId() == R.id.radioButton12) {
