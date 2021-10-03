@@ -13,6 +13,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:text="@string/lbl_bill_total_with_tax"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Bill Total with Tax" />
@@ -24,6 +26,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/lbl_tip_percent"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblBillTotal" />
 
@@ -34,6 +38,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/lbl_tip_amount"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTipPercent" />
 
@@ -44,6 +50,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/lbl_total_with_tip"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTipAmount" />
 
@@ -54,6 +62,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/lbl_number_of_people"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTotalWithTip" />
 
@@ -64,6 +74,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/lbl_total_per_person"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblNumberPeople" />
 
@@ -74,6 +86,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
         android:text="@string/lbl_overage"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTotalPerPerson" />
 
@@ -84,9 +98,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:background="#e0e0e0"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/lblTipAmount"
+        tools:ignore="TextContrastCheck"
         tools:text="Tip Amount" />
 
     <TextView
@@ -95,9 +111,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:background="#e0e0e0"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/lblTotalWithTip"
+        tools:ignore="TextContrastCheck"
         tools:text="Total With Tip" />
 
     <TextView
@@ -105,19 +123,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#e0e0e0"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/lblTotalPerPerson"
+        tools:ignore="TextContrastCheck"
         tools:text="Total per person" />
 
     <TextView
         android:id="@+id/calcOverage"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="10dp"
         android:background="#e0e0e0"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/lblOverage"
+        tools:ignore="TextContrastCheck"
         tools:text="Overage" />
 
     <Button
@@ -132,28 +155,37 @@
     <EditText
         android:id="@+id/txtTotal"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="10dp"
         android:background="@color/mint"
         android:ems="10"
         android:hint="@string/lbl_bill_total_with_tax"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/lblBillTotal" />
+        app:layout_constraintTop_toTopOf="@+id/lblBillTotal"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/txtPeople"
-        android:layout_width="81dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="5dp"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="10dp"
         android:background="@color/mint"
         android:ems="10"
         android:hint="@string/txt_no_people"
+        android:importantForAutofill="no"
         android:inputType="number"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/btnPeople"
-        app:layout_constraintTop_toTopOf="@+id/lblNumberPeople" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/lblNumberPeople"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btnClearIt"
@@ -179,37 +211,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="rdoGroupTipPercent_click"
-            android:text="12%" />
+            android:text="@string/_12" />
 
         <RadioButton
             android:id="@+id/radioButton15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="rdoGroupTipPercent_click"
-            android:text="15%" />
+            android:text="@string/_15" />
 
         <RadioButton
             android:id="@+id/radioButton18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="rdoGroupTipPercent_click"
-            android:text="18%" />
+            android:text="@string/_18" />
 
         <RadioButton
             android:id="@+id/radioButton20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="rdoGroupTipPercent_click"
-            android:text="20%" />
+            android:text="@string/_20" />
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/lblTipPercentAmount"
-        android:layout_width="167dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="10dp"
-        android:background="#e0e0e0"
-        tools:text="Tip %" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -217,6 +241,6 @@
         android:layout_height="wrap_content"
         android:onClick="rdoGroupTipPercent_click"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="227dp" />
+        app:layout_constraintGuide_end="230dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

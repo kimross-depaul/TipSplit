@@ -8,7 +8,11 @@
     <string name="lbl_total_per_person">Total per Person:</string>
     <string name="lbl_overage">Overage:</string>
     <string name="txt_bill_total_with_tax">Bill Total with Tax</string>
-    <string name="txt_no_people">No. People</string>
+    <string name="txt_no_people">#</string>
     <string name="btn_go">Go</string>
     <string name="btn_clear">Clear</string>
+    <string name="_20">20%</string>
+    <string name="_12">12%</string>
+    <string name="_15">15%</string>
+    <string name="_18">18%</string>
 </resources>
