@@ -2,6 +2,7 @@ package com.example.assignment1_kross;
 
 import static android.widget.Toast.*;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -40,6 +41,27 @@ public class MainActivity extends AppCompatActivity {
         calculator = new Calculator();
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        saveState(txtTotal, "txtTotal", outState);
+        saveState(txtNumPeople, "txtNumPeople", outState);
+        calculator.saveState(outState);
+        super.onSaveInstanceState(outState);
+    }
+
+    private void saveState(EditText editText, String name, Bundle outState) {
+       outState.putString(name, editText.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        calculator.restoreState(savedInstanceState);
+        txtTotal.setText(savedInstanceState.getString("txtTotal"));
+        txtNumPeople.setText(savedInstanceState.getString("txtNumPeople"));
+        calculateAmounts();
+    }
+
     public void rdoGroupTipPercent_click(View v) {
         if (txtTotal.getText().toString().equals("")) {
             ((RadioButton) v).setChecked(false); // Unselects the Radio if the bill is empty
@@ -57,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
             String label = (String) ((RadioButton)v).getText();
             //Log.d(TAG, "TipPercent:  Unexpected Tip Percent Selected");
         }
-        makeText(this, String.format("Radio was selected: %2d", tipPercent), LENGTH_SHORT).show();
-        Log.d(TAG, String.format("Selected radio %d",tipPercent ));
         calculateAmounts();
     }
     public void btnGo_clicked(View v) {
@@ -77,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         calcTotalWithTip.setText(calculator.getTotalWithTip(FORMAT));
         calcTotalPerPerson.setText(calculator.getBillPerPerson(FORMAT));
         calcOverage.setText(calculator.getOverage(FORMAT));
-
     }
 
 

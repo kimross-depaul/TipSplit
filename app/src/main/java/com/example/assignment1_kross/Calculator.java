@@ -1,5 +1,8 @@
 package com.example.assignment1_kross;
 
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -8,6 +11,8 @@ class Calculator {
     private Double dblTotalWithTip;
     private Double perPerson;
     int intPeople;
+
+    public Calculator() {}
 
     public void calculateTip(EditText txtDouble, Integer intTip) {
         Double d;
@@ -21,17 +26,17 @@ class Calculator {
         dblTip = d * (intTip * .01f);
         dblTotalWithTip = dblTip + d;
     }
-    public Double splitBill(EditText txtNumPeople) {
+    public void splitBill(EditText txtNumPeople) {
         try {
             intPeople = Integer.parseInt(txtNumPeople.getText().toString());
             if (intPeople > 0 && dblTotalWithTip != null) {
                 perPerson = roundUp(dblTotalWithTip / intPeople);
-                return perPerson;
+            }else {
+                perPerson = null;
             }
         }catch(NumberFormatException nex) {
-            return null;
+            perPerson = null;
         }
-        return null;
     }
     private Double roundUp(Double d) {
         return Math.round(d * 10.0) / 10.0;
@@ -58,4 +63,17 @@ class Calculator {
     }
 
 
+    public void saveState(Bundle outState) {
+        outState.putDouble("dblTip", dblTip);
+        outState.putDouble("dblTotalWithTip", dblTotalWithTip);
+        outState.putDouble("perPerson", perPerson);
+        outState.putInt("intPeople", intPeople);
+    }
+
+    public void restoreState(Bundle savedInstanceState) {
+        dblTip = savedInstanceState.getDouble("dblTip");
+        dblTotalWithTip = savedInstanceState.getDouble("dblTotalWithTip");
+        perPerson = savedInstanceState.getDouble("perPerson");
+        intPeople = savedInstanceState.getInt("intPeople");
+    }
 }
