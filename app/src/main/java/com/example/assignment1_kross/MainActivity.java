@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText txtNumPeople;
     TextView calcTotalPerPerson;
     TextView calcOverage;
+    RadioGroup rdoTip;
     Calculator calculator;
 
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         txtNumPeople = findViewById(R.id.txtPeople);
         calcTotalPerPerson = findViewById(R.id.calctotalPerPerson);
         calcOverage = findViewById(R.id.calcOverage);
+        rdoTip = findViewById(R.id.radioGroup);
         calculator = new Calculator();
     }
 
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         saveState(txtTotal, "txtTotal", outState);
         saveState(txtNumPeople, "txtNumPeople", outState);
-        outState.putInt("tipPercent", tipPercent);
+        if (tipPercent != null) outState.putInt("tipPercent", tipPercent);
         calculator.saveState(outState);
         super.onSaveInstanceState(outState);
     }
@@ -91,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
     public void btnClear_clicked(View v) {
         txtTotal.setText("");
         txtNumPeople.setText("");
+        rdoTip.clearCheck();
+        tipPercent = null;
         calculateAmounts();
     }
     public void calculateAmounts() {
@@ -101,6 +106,35 @@ public class MainActivity extends AppCompatActivity {
         calcTotalWithTip.setText(calculator.getTotalWithTip(FORMAT));
         calcTotalPerPerson.setText(calculator.getBillPerPerson(FORMAT));
         calcOverage.setText(calculator.getOverage(FORMAT));
+        validateFields();
+    }
+    private void validateFields() {
+        String t = txtTotal.getText().toString();
+        String p = txtNumPeople.getText().toString();
+        if (t.equals("") && p.equals("")) {
+            return;
+        }
+        //Check for a valid bill total
+        try {
+            Double d = Double.parseDouble(t);
+
+            if (d <= 0 || d > 999999) {
+                txtTotal.setError("Invalid Value!");
+            }
+        } catch (Exception ex) {
+            txtTotal.setError("Invalid Value!");
+        }
+        //Check for a valid no. people
+        try {
+            int n = Integer.parseInt(p);
+
+            if (n <= 0 || n > 9999) {
+                txtNumPeople.setError("Invalid Value!");
+            }
+
+        } catch (Exception ex) {
+            txtNumPeople.setError("Invalid Value!");
+        }
     }
 
 

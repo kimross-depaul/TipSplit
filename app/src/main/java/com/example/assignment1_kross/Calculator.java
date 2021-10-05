@@ -23,13 +23,11 @@ class Calculator {
                 dblTotalWithTip = dblTip + d;
             }
             return;
-        }catch (NumberFormatException nex) {
+        }catch (Exception ex) {
             dblTip = null;
             dblTotalWithTip = null;
+            return;
         }
-        dblTip = null;
-        dblTotalWithTip = null;
-
     }
     public void splitBill(EditText txtNumPeople) {
         try {
@@ -69,9 +67,9 @@ class Calculator {
 
 
     public void saveState(Bundle outState) {
-        outState.putDouble("dblTip", dblTip);
-        outState.putDouble("dblTotalWithTip", dblTotalWithTip);
-        outState.putDouble("perPerson", perPerson);
+        if (dblTip != null) outState.putDouble("dblTip", dblTip);
+        if (dblTotalWithTip != null) outState.putDouble("dblTotalWithTip", dblTotalWithTip);
+        if (perPerson != null) outState.putDouble("perPerson", perPerson);
         outState.putInt("intPeople", intPeople);
     }
 
