@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/lbl_bill_total_with_tax"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:text="@string/lbl_tip_percent"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         android:text="@string/lbl_tip_amount"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:text="@string/lbl_total_with_tip"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -70,7 +70,7 @@
         android:id="@+id/lblTotalPerPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:text="@string/lbl_total_per_person"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -82,7 +82,7 @@
         android:id="@+id/lblOverage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:text="@string/lbl_overage"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -160,7 +160,7 @@
         android:layout_height="48dp"
         android:background="@color/mint"
         android:ems="10"
-        android:hint="@string/lbl_bill_total_with_tax"
+        android:hint="@string/txt_bill_total_with_tax_hint"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
@@ -245,7 +245,7 @@
         android:layout_height="wrap_content"
         android:onClick="rdoGroupTipPercent_click"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.27" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -266,6 +266,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.71443087" />
+        app:layout_constraintGuide_percent="0.79" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

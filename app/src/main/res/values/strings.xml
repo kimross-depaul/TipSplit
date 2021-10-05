@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TipSplit</string>
     <string name="lbl_bill_total_with_tax">Bill Total with Tax:</string>
+    <string name="txt_bill_total_with_tax_hint">Bill Total</string>
     <string name="lbl_tip_percent">Tip Percent:</string>
     <string name="lbl_tip_amount">Tip Amount:</string>
     <string name="lbl_total_with_tip">Total with Tip:</string>

@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/lbl_tip_percent"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/lbl_total_with_tip"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/lbl_number_of_people"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/lbl_total_per_person"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/lbl_overage"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -124,6 +124,7 @@
         android:id="@+id/calctotalPerPerson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
         android:background="#e0e0e0"
         android:textAlignment="textEnd"
         android:textSize="16sp"
@@ -164,7 +165,7 @@
         android:layout_marginEnd="10dp"
         android:background="@color/mint"
         android:ems="10"
-        android:hint="@string/lbl_bill_total_with_tax"
+        android:hint="@string/txt_bill_total_with_tax_hint"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
@@ -196,12 +197,12 @@
         android:id="@+id/btnClearIt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:onClick="btnClear_clicked"
         android:text="@string/btn_clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblOverage" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -247,6 +248,6 @@
         android:layout_height="wrap_content"
         android:onClick="rdoGroupTipPercent_click"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="230dp" />
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
